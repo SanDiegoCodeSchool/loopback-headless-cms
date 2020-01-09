@@ -1,0 +1,17 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "mongodb"
+  },
+  "mongod": {
+    "host": "",
+    "port": 0,
+    "url": "",
+    "database": "mongodb",
+    "password": "",
+    "name": "mongod",
+    "user": "",
+    "useNewUrlParser": true,
+    "connector": "mongodb"
+  }
+}
