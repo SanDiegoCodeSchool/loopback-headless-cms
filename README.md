@@ -2,11 +2,12 @@
 
 Current Status:
 
-- Takes in values from the input fields and adds them to the state using React Hooks.
-- Changed the package.json build scripts slightly to accomodate loopback start and front end build/start 
+- Created a WYSIWYG with some hard coded CSS 
+- Content state is currently being saved as an object to the database
+
 
 
 Next Steps: 
 
-- Add WYSIWYG
-- Complete value function so that it makes proper calls to LoopBack routes 
+- Need to create event handler buttons for text editing purposes for the WYSIWYG
+- Fix current state so that content is taken in properly 

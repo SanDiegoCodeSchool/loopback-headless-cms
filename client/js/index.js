@@ -1,37 +1,64 @@
 
 import React, { useState, useEffect } from "react"
 import ReactDom from "react-dom"
+import axios from "axios"
+import { Editor, EditorState } from 'draft-js';
+import '../css/App.css'
+
+//** COMPONENTS **//
+// import WYSIWYG from './Components/WYSIWYG.js'
 
 export default function Index() {
 
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
     const [imagePath, setImagePath] = useState("")
-    const [content, setContent] = useState("")
+    const [editorState, setEditorState] = useState(EditorState.createEmpty())
 
-    let valueHandler = () => {
-        const testObject = {
-            title: title, 
-            author: author,
-            imagePath: imagePath,
-            content: content
-        }
-        console.log(testObject)
+    const editor = React.useRef(null);
+
+    function focusEditor() {
+        editor.current.focus();
     }
 
-    return(
-        <div>
-            <label htmlFor="title">title</label>
-           <input id="title" onChange={e => setTitle(e.target.value)}></input>
-           <label htmlFor="author">author</label>
-           <input id="author" onChange={e => setAuthor(e.target.value)}></input>
-           <label htmlFor="imagePath">Image Path</label>
-           <input id="imagePath" onChange={e => setImagePath(e.target.value)}></input>
-           <label htmlFor="content">content</label>
-           <input id="content" onChange={e => setContent(e.target.value)}></input>
-           <button onClick={valueHandler}>Save</button>
-        </div>
+    React.useEffect(() => {
+        focusEditor()
+    }, []);
 
+    let valueHandler = () => {
+        axios.post("http://localhost:5000/api/blogs", {
+            title: title,
+            date: Date.now(),
+            author: author,
+            imagePath: imagePath,
+            content: editorState
+        })
+            .then((response) => console.log(response))
+    }
+
+    const divStyle = {
+        display: "grid",
+        justifyContent: "center"
+    };
+
+    return (
+        <div style={divStyle}>
+            <label htmlFor="title">title</label>
+            <input id="title" onChange={e => setTitle(e.target.value)}></input>
+            <label htmlFor="author">author</label>
+            <input id="author" onChange={e => setAuthor(e.target.value)}></input>
+            <label htmlFor="imagePath">Image Path</label>
+            <input id="imagePath" onChange={e => setImagePath(e.target.value)}></input>
+            <div onClick={focusEditor}>
+                <Editor
+                    ref={editor}
+                    editorState={editorState}
+                    onChange={editorState  => setEditorState(editorState)}
+                />
+            </div>
+            <button onClick={valueHandler}>Save</button>
+        </div>
+  
     )
 
 }
