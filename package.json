@@ -17,6 +17,7 @@
     "concurrently": "^5.0.2",
     "cors": "^2.5.2",
     "draft-js": "^0.11.4",
+    "draftjs-to-html": "^0.9.1",
     "helmet": "^3.10.0",
     "loopback": "^3.22.0",
     "loopback-boot": "^2.6.5",

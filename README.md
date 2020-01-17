@@ -1,13 +1,8 @@
 # HEADLESS CMS
 
 Current Status:
-
-- Created a WYSIWYG with some hard coded CSS 
-- Content state is currently being saved as an object to the database
-
-
+  - Able to generate HTML string through WYSIWYG editor
+  - Saves editor state stringified to MongoDB
 
 Next Steps: 
-
-- Need to create event handler buttons for text editing purposes for the WYSIWYG
-- Fix current state so that content is taken in properly 
+  - Fix HTML preview (currently just displays a string of HTML tags, we want it to display the HTML as it displays inside the editor)

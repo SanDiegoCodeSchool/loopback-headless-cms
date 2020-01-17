@@ -5,7 +5,8 @@ import axios from "axios"
 import '../css/App.css'
 
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState } from 'draft-js';
+import { EditorState, convertToRaw} from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 export default function Index() {
@@ -15,16 +16,6 @@ export default function Index() {
     const [imagePath, setImagePath] = useState("")
     const [editorState, setEditorState] = useState(EditorState.createEmpty())
 
-    // const editor = React.useRef(null);
-
-    // function focusEditor() {
-    //     editor.current.focus();
-    // }
-
-    // React.useEffect(() => {
-    //     focusEditor()
-    // }, []);
-
     let valueHandler = () => {
         axios.post("http://localhost:5000/api/blogs", {
             title: title,
@@ -33,7 +24,8 @@ export default function Index() {
             imagePath: imagePath,
             content: JSON.stringify(editorState)
         })
-            .then((response) => console.log(`Response`,response,`\n\nContent Object`,JSON.parse(response.data.content)))
+            .then((response) => console.log(`Response`,response)); // `\n\neditorstate.getCurrentContent ${JSON.stringify(convertToRaw(editorState.getCurrentContent()))}`))
+            // console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     }
 
     const divStyle = {
@@ -59,10 +51,11 @@ export default function Index() {
             />
             </div>
             <button onClick={valueHandler}>Save</button>
+            <> 
+            {draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+            </>
         </div>
-  
     )
-
 }
 
 ReactDom.render(<Index />, document.getElementById("root"))
