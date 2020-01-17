@@ -1,12 +1,8 @@
 # HEADLESS CMS
 
 Current Status:
-
-- Takes in values from the input fields and adds them to the state using React Hooks.
-- Changed the package.json build scripts slightly to accomodate loopback start and front end build/start 
-
+  - Able to generate HTML string through WYSIWYG editor
+  - Saves editor state stringified to MongoDB
 
 Next Steps: 
-
-- Add WYSIWYG
-- Complete value function so that it makes proper calls to LoopBack routes 
+  - Fix HTML preview (currently just displays a string of HTML tags, we want it to display the HTML as it displays inside the editor)
