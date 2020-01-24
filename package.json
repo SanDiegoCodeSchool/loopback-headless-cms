@@ -7,7 +7,9 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "concurrently \"node .\" \"parcel client/Index.html\"",
+    "start": "concurrently \"node .\" \"parcel client/index.html\"",
+    "start-server": "node .",
+    "start-client": "parcel client/index.html",
     "build": "parcel build client/index.html --public-url ./",
     "posttest": "npm run lint && npm audit"
   },

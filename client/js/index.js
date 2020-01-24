@@ -51,9 +51,15 @@ export default function Index() {
             />
             </div>
             <button onClick={valueHandler}>Save</button>
-            <> 
-            {draftToHtml(convertToRaw(editorState.getCurrentContent()))}
-            </>
+            <label htmlFor="rawPreview">Raw unprocessed HTML string</label>
+            <div id="rawPreview "> 
+                {draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+            </div>
+            <label htmlFor="htmlPreview">HTML Preview</label>
+            <div 
+                id="htmlPreview" 
+                dangerouslySetInnerHTML={{ __html:draftToHtml(convertToRaw(editorState.getCurrentContent( ))) }} 
+            />
         </div>
     )
 }
