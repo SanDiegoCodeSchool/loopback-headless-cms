@@ -1,8 +1,16 @@
 # HEADLESS CMS
 
-Current Status:
-  - Able to generate HTML string through WYSIWYG editor
-  - Saves editor state stringified to MongoDB
+## Project Overview
+This repo is home to our loopback-based headless content management system
 
-Next Steps: 
-  - Fix HTML preview (currently just displays a string of HTML tags, we want it to display the HTML as it displays inside the editor)
+This project was launched in response to 2 factors:
+- a certain CMS decided to start charging $2 for every person that RSVP'd to an event, regardless of whether or not they actually decided to show up.
+- other node-based headless CMS's just weren't cutting it. The stable ones didn't offer all of the features that we hoped for and the feature-rich projects weren't stable. 
+
+## How to Launch the Project
+
+=== LFW TODO ===
+
+## Guidelines for Contributing
+
+This project is open source and open to outside contributions! If you are interested in pitching in, [read the contribution guidelines by clicking here](https://www.github.com/SanDiegoCodeSchool/loopback-headless-cms/docs/contributing.md)
